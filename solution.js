@@ -35,6 +35,7 @@ function kali(a, b) {
  * @returns {number | string}
  */
 function bagi(a, b) {
+    if (b === 0) throw new Error("Tidak bisa membagi dengan nol");
     return a / b;
 }
 
@@ -45,7 +46,7 @@ function bagi(a, b) {
  * @returns {number}
  */
 function pangkat(a, b) {
-    return a ** b;
+    return Math.pow(a, b);
 }
 
 /**
@@ -54,11 +55,9 @@ function pangkat(a, b) {
  * @returns {number}
  */
 function faktorial(n) {
-    if (n === 1 | n === 0) {
-        return 1;
-    } else {
-        return n * faktorial(n - 1);
-    }
+    if (n < 0) return undefined;
+    if (n === 0 || n === 1) return 1;
+    return n * faktorial(n - 1);
 }
 
 /**
@@ -67,6 +66,11 @@ function faktorial(n) {
  * @returns {boolean}
  */
 function isPrima(n) {
+    if (n < 2) return false;
+    for (let i = 2; i <= Math.sqrt(n); i++) {
+        if (n % i === 0) return false;
+    }
+    return true;
 }
 
 /**
@@ -88,11 +92,8 @@ function modulus(a, b) {
  * @returns {number}
  */
 function absolut(a) {
-    if (a < 0) {
-        return a *= -1;
-    } else {
-        return a;
-    }
+    return Math.abs(n);
+
 }
 
 
@@ -103,11 +104,7 @@ function absolut(a) {
  * @returns {number}
  */
 function maksimum(a, b) {
-    if (a < b) {
-        return b
-    } else {
-        return a
-    }
+    return Math.max(a, b);
 }
 
 /**
@@ -117,11 +114,7 @@ function maksimum(a, b) {
  * @returns {number}
  */
 function minimum(a, b) {
-    if (a < b) {
-        return a;
-    } else {
-        return b;
-    }
+    return Math.min(a, b);
 }
 
 /**
@@ -130,9 +123,21 @@ function minimum(a, b) {
  * @returns {number}
  */
 function bulatkan(a) {
-
+    return Math.round(a);
 }
 
 // Export hasil akhir
-
-module.exports = tambah;
+module.exports = {
+    tambah,
+    kurang,
+    kali,
+    bagi,
+    pangkat,
+    faktorial,
+    isPrima,
+    modulus,
+    absolut,
+    maksimum,
+    minimum,
+    bulatkan
+};
