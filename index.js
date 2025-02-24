@@ -39,7 +39,7 @@ function tampilkanMenu() {
     console.log("0. Keluar");
 }
 
-// Looping function-function kalkulator
+// Looping kalkulator functions
 function mulaiKalkulator() {
     tampilkanMenu();
     rl.question("Pilih operasi (0-12): ", (pilihan) => {
@@ -50,6 +50,7 @@ function mulaiKalkulator() {
             return;
         }
 
+        // Binary math operation
         if ([1, 2, 3, 4, 5, 8, 10, 11].includes(pilihan)) {
             rl.question("Masukkan angka pertama: ", (angka1) => {
                 rl.question("Masukkan angka kedua: ", (angka2) => {
@@ -86,6 +87,8 @@ function mulaiKalkulator() {
                     mulaiKalkulator();
                 });
             });
+
+            // Unary math operations
         } else if ([6, 7, 9, 12].includes(pilihan)) {
             rl.question("Masukkan angka: ", (angka) => {
                 angka = parseFloat(angka);
@@ -106,9 +109,13 @@ function mulaiKalkulator() {
                         hasil = bulatkan(angka);
                         break;
                 }
+
+                // Tampilkan hasil kalkulasi
                 console.log(`Hasil: ${hasil}`);
                 mulaiKalkulator();
             });
+
+            // Opsi yang di input tidak valid
         } else {
             console.log("Pilihan tidak valid! Coba lagi.");
             mulaiKalkulator();
